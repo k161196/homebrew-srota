@@ -1,6 +1,6 @@
 cask "srota" do
-  version "0.0.0"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  version "0.0.1"
+  sha256 "a4cb006ddae753dbc763e778590318f15b3f795dee6959f4be91a18e210f9453"
 
   url "https://github.com/k161196/homebrew-srota/releases/download/v#{version}/Srota-#{version}.zip"
   name "Srota"
@@ -8,9 +8,10 @@ cask "srota" do
   homepage "https://k161196.github.io/srota-site/"
 
   app "Srota.app"
+  binary "#{appdir}/Srota.app/Contents/MacOS/srota-cli", target: "srota-cli"
 
   postflight do
-    # Srota isn't notarized (no paid Developer ID), so macOS quarantines it on first launch.
+    # Srota is not notarized (no paid Developer ID), so macOS quarantines it on first launch.
     system_command "/usr/bin/xattr",
                    args: ["-dr", "com.apple.quarantine", "#{appdir}/Srota.app"],
                    sudo: false
