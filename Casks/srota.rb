@@ -17,8 +17,10 @@ cask "srota" do
                    sudo: false
   end
 
-  uninstall quit:      "com.kiran.srota",
-            launchctl: "com.kiran.srota.daemon"
+  # The daemon (com.kiran.srota.daemon) is deliberately NOT unloaded here: it manages its own
+  # lifecycle across an upgrade (self-exec handoff of live PTY sessions, srota-daemon/HandoffManager.swift)
+  # instead of being force-killed by the cask. Only the GUI app needs to quit to pick up new app-shell code.
+  uninstall quit: "com.kiran.srota"
 
   zap trash: [
     "~/.srota",
