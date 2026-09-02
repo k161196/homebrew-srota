@@ -1,6 +1,6 @@
 cask "srota" do
-  version "0.0.15"
-  sha256 "d824513c8bdd8d2a40e08934082a9e71a4b8cc790939ec4ff8fc2f61c7a3edc3"
+  version "0.0.16"
+  sha256 "a568e6c7dc78bdbb8406199f1a9feebdb55afecaa041bc44586b33099c30d469"
 
   url "https://github.com/k161196/homebrew-srota/releases/download/v#{version}/Srota-#{version}.zip"
   name "Srota"
