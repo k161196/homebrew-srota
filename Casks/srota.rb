@@ -1,6 +1,6 @@
 cask "srota" do
-  version "0.0.7"
-  sha256 "a55cf18a111a3086a0ec1e9d938a34a3c4c2d68b6da106f37bb229739b327e18"
+  version "0.0.8"
+  sha256 "481fa592dc063019d8dcce0246e1401c99ed2f00b0f4936238a88dc0e1e35970"
 
   url "https://github.com/k161196/homebrew-srota/releases/download/v#{version}/Srota-#{version}.zip"
   name "Srota"
@@ -17,10 +17,8 @@ cask "srota" do
                    sudo: false
   end
 
-  # The daemon (com.kiran.srota.daemon) is deliberately NOT unloaded here: it manages its own
-  # lifecycle across an upgrade (self-exec handoff of live PTY sessions, srota-daemon/HandoffManager.swift)
-  # instead of being force-killed by the cask. Only the GUI app needs to quit to pick up new app-shell code.
-  uninstall quit: "com.kiran.srota"
+  uninstall quit:      "com.kiran.srota",
+            launchctl: "com.kiran.srota.daemon"
 
   zap trash: [
     "~/.srota",
